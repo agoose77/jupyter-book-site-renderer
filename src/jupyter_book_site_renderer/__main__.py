@@ -1,7 +1,7 @@
 import asyncio
 
-from . import JupyterBookSiteRenderer
+from .app import JupyterBookSiteRendererApp
 
 if __name__ == "__main__":
-    app = JupyterBookSiteRenderer()
+    app = JupyterBookSiteRendererApp()
     asyncio.run(app.start())
