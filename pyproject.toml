@@ -3,11 +3,11 @@ requires = ["hatchling"]
 build-backend = "hatchling.build"
 
 [project]
-name = "myst-theme-renderer"
+name = "jupyter-book-site-renderer"
 dynamic = ["version"]
-description = ''
+description = 'Render MyST AST into HTML using a MyST template'
 readme = "README.md"
-requires-python = ">=3.8"
+requires-python = ">=3.10"
 license = "MIT"
 keywords = []
 authors = [
@@ -24,38 +24,18 @@ classifiers = [
   "Programming Language :: Python :: Implementation :: CPython",
   "Programming Language :: Python :: Implementation :: PyPy",
 ]
-dependencies = []
+dependencies = [
+    "aiohttp",
+    "traitlets",
+    "ruamel.yaml",
+    "mystmd"
+]
 
 [project.urls]
-Documentation = "https://github.com/Angus Hollands/myst-theme-renderer#readme"
-Issues = "https://github.com/Angus Hollands/myst-theme-renderer/issues"
-Source = "https://github.com/Angus Hollands/myst-theme-renderer"
+Documentation = "https://github.com/agoose77/jupyter-book-site-renderer#readme"
+Issues = "https://github.com/agoose77/jupyter-book-site-renderer/issues"
+Source = "https://github.com/agoose77/jupyter-book-site-renderer"
 
 [tool.hatch.version]
-path = "src/myst_theme_renderer/__about__.py"
+path = "src/jupyter_book_site_renderer/__about__.py"
 
-[tool.hatch.envs.types]
-extra-dependencies = [
-  "mypy>=1.0.0",
-]
-[tool.hatch.envs.types.scripts]
-check = "mypy --install-types --non-interactive {args:src/myst_theme_renderer tests}"
-
-[tool.coverage.run]
-source_pkgs = ["myst_theme_renderer", "tests"]
-branch = true
-parallel = true
-omit = [
-  "src/myst_theme_renderer/__about__.py",
-]
-
-[tool.coverage.paths]
-myst_theme_renderer = ["src/myst_theme_renderer", "*/myst-theme-renderer/src/myst_theme_renderer"]
-tests = ["tests", "*/myst-theme-renderer/tests"]
-
-[tool.coverage.report]
-exclude_lines = [
-  "no cov",
-  "if __name__ == .__main__.:",
-  "if TYPE_CHECKING:",
-]
