@@ -1,9 +1,9 @@
-# myst-theme-renderer
+# jupyter-book-site-renderer
 
-[![PyPI - Version](https://img.shields.io/pypi/v/myst-theme-renderer.svg)](https://pypi.org/project/myst-theme-renderer)
-[![PyPI - Python Version](https://img.shields.io/pypi/pyversions/myst-theme-renderer.svg)](https://pypi.org/project/myst-theme-renderer)
+[![PyPI - Version](https://img.shields.io/pypi/v/jupyter-book-site-renderer.svg)](https://pypi.org/project/jupyter-book-site-renderer)
+[![PyPI - Python Version](https://img.shields.io/pypi/pyversions/jupyter-book-site-renderer.svg)](https://pypi.org/project/jupyter-book-site-renderer)
 
------
+---
 
 ## Table of Contents
 
@@ -13,9 +13,9 @@
 ## Installation
 
 ```console
-pip install myst-theme-renderer
+pip install jupyter-book-site-renderer
 ```
 
 ## License
 
-`myst-theme-renderer` is distributed under the terms of the [MIT](https://spdx.org/licenses/MIT.html) license.
+`jupyter-book-site-renderer` is distributed under the terms of the [MIT](https://spdx.org/licenses/MIT.html) license.

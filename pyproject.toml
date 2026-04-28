@@ -28,7 +28,7 @@ dependencies = [
     "aiohttp",
     "traitlets",
     "ruamel.yaml",
-    "mystmd"
+    "jupyter-book"
 ]
 
 [project.urls]
