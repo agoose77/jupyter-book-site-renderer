@@ -61,8 +61,6 @@ class JupyterBookSiteRenderer(LoggingConfigurable):
     If the AST does not exist, attempt a source build.
     """
 
-    name = Unicode("jupyter-book-site-renderer")
-
     default_theme = Unicode(
         "site/myst/book-theme",
         help="The default theme id (of the form `site/group/name`) to use for rendering into HTML. Defaults to `site/myst/book-theme`",

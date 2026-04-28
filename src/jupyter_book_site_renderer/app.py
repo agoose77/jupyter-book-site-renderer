@@ -15,7 +15,7 @@ class JupyterBookSiteRendererApp(Application):
     If the AST does not exist, attempt a source build.
     """
 
-    name = Unicode("jupyter-book-site-renderer")
+    name = Unicode("jupyter-book-site-renderer-app")
 
     site_path = Unicode(config=True)
     html_path = Unicode(config=True)
