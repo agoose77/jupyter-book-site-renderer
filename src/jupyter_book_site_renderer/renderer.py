@@ -17,6 +17,7 @@ import re
 import urllib.parse
 import shlex
 import tempfile
+import psutil
 
 import socket
 from traitlets.config import LoggingConfigurable
@@ -24,6 +25,15 @@ from traitlets import Unicode
 
 
 from ruamel.yaml import YAML
+
+
+def kill_process_tree(pid: int):
+    parent = psutil.Process(pid)
+    for child in parent.children(
+        recursive=True
+    ):
+        child.kill()
+    parent.kill()
 
 
 def random_port():
@@ -86,12 +96,11 @@ class JupyterBookSiteRenderer(LoggingConfigurable):
             stderr=asyncio.subprocess.STDOUT,
         )
         stdout, _ = await proc.communicate()
-        retcode = await proc.wait()
 
-        if retcode != 0:
+        if proc.returncode != 0:
             for line in stdout.decode().splitlines():
                 self.log.error(line)
-            raise ProcessFailedError("An error occurred whilst invoking process")
+            raise ProcessFailedError("n error occurred whilst invoking process")
 
     def slug_to_url(self, slug: str) -> str:
         """
@@ -212,7 +221,9 @@ class JupyterBookSiteRenderer(LoggingConfigurable):
         while "Server started" not in (await proc.stdout.readline()).decode():
             ...
         yield
-        proc.terminate()
+
+        kill_process_tree(proc.pid)
+        await proc.wait()
 
     @contextlib.asynccontextmanager
     async def serve_content(self, content_path: pathlib.Path, content_port: int):

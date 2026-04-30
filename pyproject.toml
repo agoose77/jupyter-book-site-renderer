@@ -28,7 +28,8 @@ dependencies = [
     "aiohttp",
     "traitlets",
     "ruamel.yaml",
-    "jupyter-book"
+    "jupyter-book",
+    "psutil"
 ]
 
 [project.urls]
