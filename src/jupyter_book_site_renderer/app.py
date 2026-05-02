@@ -1,6 +1,7 @@
 # SPDX-FileCopyrightText: 2026-present Angus Hollands <goosey15@gmail.com>
 #
 # SPDX-License-Identifier: MIT
+import asyncio
 import pathlib
 
 from traitlets.config import Application
@@ -17,8 +18,8 @@ class JupyterBookSiteRendererApp(Application):
 
     name = Unicode("jupyter-book-site-renderer-app")
 
-    site_path = Unicode(config=True)
-    html_path = Unicode(config=True)
+    site_path = Unicode(None, config=True, allow_none=False)
+    html_path = Unicode("html", config=True)
     base_url = Unicode("/", config=True)
 
     classes = List([JupyterBookSiteRenderer])
@@ -30,8 +31,7 @@ class JupyterBookSiteRendererApp(Application):
         "base-url": "JupyterBookSiteRendererApp.base_url",
     }
 
-    async def start(self):
-        self.initialize()
+    async def build(self):
         self.load_config_file("jupyter_book_site_renderer")
         self.load_config_environ()
 
@@ -41,3 +41,6 @@ class JupyterBookSiteRendererApp(Application):
             html_path=pathlib.Path(self.html_path),
             base_url=self.base_url,
         )
+
+    def start(self):
+        asyncio.run(self.build())

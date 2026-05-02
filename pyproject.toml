@@ -37,6 +37,9 @@ Documentation = "https://github.com/agoose77/jupyter-book-site-renderer#readme"
 Issues = "https://github.com/agoose77/jupyter-book-site-renderer/issues"
 Source = "https://github.com/agoose77/jupyter-book-site-renderer"
 
+[project.scripts]
+jupyter-book-site-renderer = "jupyter_book_site_renderer.__main__:main"
+
 [tool.hatch.version]
 path = "src/jupyter_book_site_renderer/__about__.py"
 

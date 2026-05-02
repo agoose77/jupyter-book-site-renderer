@@ -1,7 +1,10 @@
-import asyncio
-
 from .app import JupyterBookSiteRendererApp
 
-if __name__ == "__main__":
+
+def main(argv=None):
     app = JupyterBookSiteRendererApp()
-    asyncio.run(app.start())
+    app.initialize(argv)
+    app.start()
+
+if __name__ == "__main__":
+    main()
